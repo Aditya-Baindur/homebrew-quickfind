@@ -10,4 +10,7 @@ class Quickfind < Formula
   def install
     bin.install "cmd.sh"  # Install the script to the bin directory
   end
+
+  # Run the script immediately after installation
+  system "zsh", "#{bin}/cmd.sh"
 end
