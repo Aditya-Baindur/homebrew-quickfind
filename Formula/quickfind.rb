@@ -4,15 +4,15 @@ class Quickfind < Formula
   url "https://github.com/Aditya-Baindur/quickFind/archive/refs/tags/2.0.0.tar.gz"
   version "2.0.0"
   sha256 "982e7dec505d7a466bf7dbb8ec1e8a4dc8c8f1863f44f9f4715efd1291494061"
-
-  depends_on "zsh"  # Optional: Only if required for script execution
+  
+  depends_on "zsh"
 
   def install
-    bin.install "cmd.sh"  # Adjust this path if the script is inside a subfolder
+    bin.install "cmd.sh" => "quickfind"  # Rename and install the script
   end
 
-  # Optionally run the script post-install, or remove this if not necessary
   def post_install
-    system "zsh", "#{bin}/cmd.sh"
+    chmod 0755, bin/"quickfind"  # Ensure it's executable
+    system bin/"quickfind"  # Auto-run quickfind after installation
   end
 end
