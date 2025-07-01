@@ -1,18 +1,37 @@
 class Quickfind < Formula
-  desc "A script to quickly navigate through files and folders"
+  desc "Directory alias manager with quick access and cd override"
   homepage "https://github.com/Aditya-Baindur/quickFind"
-  url "https://github.com/Aditya-Baindur/quickFind/archive/refs/tags/4.0.tar.gz"
-  version "4.0"
-  sha256 "feefaf05cf5f177da43bcf6942776968bfaf0fcf926cf934736e78f5da926eb0"
-  
-  depends_on "bash"
+  url "https://github.com/Aditya-Baindur/quickFind/archive/refs/tags/5.0.0.tar.gz"
+  sha256 "337a1a7cc58693dec6aab2ad41f129552d99d53b6314eef0f1d7b1232ed99d05"
+  license "MIT"
 
   def install
-    bin.install "cmd.sh" => "quickfind"  # Rename and install the script
+    system "make"
+    bin.install "quickfind"
+
+    # install global qfcd shell function
+    system "sudo", "./qfcd-init"
   end
 
-  def post_install
-    chmod 0755, bin/"quickfind"  # Ensure it's executable
-    system bin/"quickfind"  # Auto-run quickfind after installation
+  def caveats
+    <<~EOS
+      The shell function 'qfcd' was installed to /etc/profile.d/qfcd.sh.
+      It will be auto-loaded in all login shells.
+
+      🧠 To use it in this terminal session, run:
+          . /etc/profile.d/qfcd.sh
+
+      ⚠️ If using zsh and it doesn't auto-load, add this to ~/.zprofile:
+
+          [[ -d /etc/profile.d ]] && for f in /etc/profile.d/*.sh; do source "$f"; done
+
+    EOS
+  end
+
+  test do
+    assert_equal "true", shell_output("#{bin}/quickfind --brew").strip
+
+    system "#{bin}/quickfind", "init", "testalias"
+    assert_match "testalias", shell_output("#{bin}/quickfind list")
   end
 end
