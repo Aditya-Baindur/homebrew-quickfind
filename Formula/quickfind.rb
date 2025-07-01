@@ -3,7 +3,7 @@ class Quickfind < Formula
   homepage "https://github.com/Aditya-Baindur/quickFind"
   url "https://github.com/Aditya-Baindur/quickFind/archive/refs/tags/4.0.tar.gz"
   version "4.0"
-  sha256 "5744a281b2fb9a3df86b120a76f6db2af1de41c7ff078de9ff382740f3d7b83f"
+  sha256 "feefaf05cf5f177da43bcf6942776968bfaf0fcf926cf934736e78f5da926eb0"
   
   depends_on "bash"
 
