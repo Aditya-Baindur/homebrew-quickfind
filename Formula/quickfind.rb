@@ -1,8 +1,8 @@
 class Quickfind < Formula
   desc "Directory alias manager with quick access and cd override"
   homepage "https://github.com/Aditya-Baindur/quickFind"
-  url "https://github.com/Aditya-Baindur/quickFind/archive/refs/tags/5.0.1.tar.gz"
-  sha256 "269657c471d0fe42ddf28b5e684cab6336f68147446f2cf9d3c7f253f5c567ba"
+  url "https://github.com/Aditya-Baindur/quickFind/archive/refs/tags/6.0.0.tar.gz"
+  sha256 "d83079ee7e0aaeaf728ba11523cfb9eb262b67cba22fab675053cdc9dd72777b"
   license "MIT"
 
   depends_on "make" => :build  # 👈 Add this line
