@@ -7,8 +7,9 @@ class Quickfind < Formula
 
   def install
     system "make"
-    bin.install "quickfind"
+    system "make", "install", "PREFIX=#{prefix}"
   end
+
 
   def caveats
     <<~EOS
