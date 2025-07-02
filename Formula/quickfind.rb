@@ -5,11 +5,12 @@ class Quickfind < Formula
   sha256 "269657c471d0fe42ddf28b5e684cab6336f68147446f2cf9d3c7f253f5c567ba"
   license "MIT"
 
+  depends_on "make" => :build  # 👈 Add this line
+
   def install
     system "make"
     system "make", "install", "PREFIX=#{prefix}"
   end
-
 
   def caveats
     <<~EOS
