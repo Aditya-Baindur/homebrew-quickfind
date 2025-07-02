@@ -8,23 +8,21 @@ class Quickfind < Formula
   def install
     system "make"
     bin.install "quickfind"
-
-    # install global qfcd shell function
-    system "sudo", "./qfcd-init"
   end
 
   def caveats
     <<~EOS
-      The shell function 'qfcd' was installed to /etc/profile.d/qfcd.sh.
-      It will be auto-loaded in all login shells.
+      The shell function 'qfcd' is not auto-installed by Homebrew for security reasons.
 
-      🧠 To use it in this terminal session, run:
+      🧠 To enable it, run manually:
+          sudo #{HOMEBREW_PREFIX}/bin/qfcd-init
+
+      💡 To activate it in this session:
           . /etc/profile.d/qfcd.sh
 
       ⚠️ If using zsh and it doesn't auto-load, add this to ~/.zprofile:
 
           [[ -d /etc/profile.d ]] && for f in /etc/profile.d/*.sh; do source "$f"; done
-
     EOS
   end
 
