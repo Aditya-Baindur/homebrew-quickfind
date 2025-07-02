@@ -2,7 +2,7 @@ class Quickfind < Formula
   desc "Directory alias manager with quick access and cd override"
   homepage "https://github.com/Aditya-Baindur/quickFind"
   url "https://github.com/Aditya-Baindur/quickFind/archive/refs/tags/5.0.0.tar.gz"
-  sha256 "337a1a7cc58693dec6aab2ad41f129552d99d53b6314eef0f1d7b1232ed99d05"
+  sha256 "36ca869fb3dff4db9d21d073ca291008eaa5e047419b2241b72097d8687cfa3d"
   license "MIT"
 
   def install
